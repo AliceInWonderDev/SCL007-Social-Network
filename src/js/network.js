@@ -355,7 +355,6 @@ console.log('etiquetaPublicacion');
     }    
 }
 
-<<<<<<< HEAD
 //PROFILE
 document.getElementById("profile").addEventListener("click",() => {
     firebase.auth().onAuthStateChanged(user => {
@@ -388,5 +387,3 @@ profile = user => {
     `
 }
 ;
-=======
->>>>>>> 2b5bf7b0ac686e5af385b6ea1f3c051936da68f4
