@@ -4,7 +4,7 @@ document.getElementById("footer").style.display="none";
 document.getElementById("registro").addEventListener("click",() => {
     let email = document.getElementById('email').value;
     let contrasena = document.getElementById('contrasena').value;
-   
+
     firebase.auth().createUserWithEmailAndPassword(email, contrasena)
     .then(()=>{
         verificar()
@@ -15,7 +15,7 @@ document.getElementById("registro").addEventListener("click",() => {
             alert("Ingrese contraseña de 6 dígitos o más");
         }else if (email.indexOf("@")); 
             alert("Ingrese email válido")
-      });
+    });
 })
 
 //INGRESO USUARIO VIA MAIL Y CLAVE
@@ -34,7 +34,7 @@ document.getElementById("acceder").addEventListener("click",() => {
             alert("Ingrese email válido");
         // var errorCode = error.code;
         // var errorMessage = error.message;
-      });
+    });
 })
 
 //OBSERVA SI ES UN USUARIO REGISTRADO
@@ -42,24 +42,24 @@ observador = () => {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             aparece(user);
-          // User is signed in.
-          let displayName = user.displayName;
-          let email = user.email;
-          //console.log(user);
-          let emailVerified = user.emailVerified;
-          console.log(user.emailVerified)
-          let photoURL = user.photoURL;
-          console.log (user.photoURL)
-          let isAnonymous = user.isAnonymous;
-          let uid = user.uid;
-          console.log(user.uid)
-          let providerData = user.providerData;
-          console.log (user.providerData[0].providerId)
-        } else {
-            console.log("No existe usuario activo")
-            //apareceNousuario(); //ingresa tus datos para acceder
-            }
-      });
+        // User is signed in.
+        let displayName = user.displayName;
+        let email = user.email;
+        //console.log(user);
+        let emailVerified = user.emailVerified;
+        console.log(user.emailVerified)
+        let photoURL = user.photoURL;
+        console.log (user.photoURL)
+        let isAnonymous = user.isAnonymous;
+        let uid = user.uid;
+        console.log(user.uid)
+        let providerData = user.providerData;
+        console.log (user.providerData[0].providerId)
+    } else {
+        console.log("No existe usuario activo")
+        //apareceNousuario(); //ingresa tus datos para acceder
+        }
+    });
 }
 observador();
 
@@ -116,7 +116,7 @@ function timeConverter(UNIX_timestamp){
     var min = a.getMinutes();
     var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min ;
     return time;
-  }
+}
 
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
@@ -164,9 +164,9 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
         }else{
            // console.log ("NO muestre icono borrar")
            //console.log ("NO muestre icono Editar")
-           let timestamp=doc.data().fecha;
-           let dateTimestamp= timestamp.seconds;
-           let date = timeConverter(dateTimestamp);
+        let timestamp=doc.data().fecha;
+        let dateTimestamp= timestamp.seconds;
+        let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
             ` 
                 <ul id="comments-list" class="comments-list">
@@ -277,7 +277,7 @@ guardar = () => {
     }else if(document.getElementById('r2').checked){
         categoryValue = document.getElementById('r2').value;
     }
-     var db = firebase.firestore(); 
+    var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
         email: user.email, 
@@ -308,7 +308,7 @@ guardar = () => {
         console.error("Error adding document: ", error);
     });
 }
-     
+
     });
 
     
